@@ -48,6 +48,7 @@ nav a:hover {
   flex-wrap: wrap;
   margin: 30px auto;
   max-width: 1000px;
+  padding: 20px;
 }
 
 figure {
@@ -56,8 +57,11 @@ figure {
 
 figure img {
   width: 260px;
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
   border: 3px solid white;
+  display: block;
 }
 
 .intro {
@@ -69,6 +73,11 @@ figure img {
 
 .quote {
   font-style: italic;
+}
+
+#content h2 {
+  color: orange;
+  margin-top: 20px;
 }
 
 table {
@@ -96,6 +105,7 @@ td strong {
 
 ul {
   width: 500px;
+  max-width: 90%;
   margin: 25px auto;
   text-align: left;
   line-height: 1.8;
@@ -109,6 +119,7 @@ ul {
 iframe {
   margin: 20px auto;
   max-width: 100%;
+  display: block;
   background-color: white;
 }
 
@@ -117,10 +128,13 @@ footer {
   padding: 20px;
   font-size: 0.8em;
   color: lightblue;
+  border-top: 2px solid steelblue;
 }
 
 footer img {
-  width: 90px;
+  width: 120px;
+  max-width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto 10px;
 }
