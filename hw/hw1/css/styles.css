@@ -1,4 +1,3 @@
-/* Import a nicer Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
@@ -19,13 +18,13 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   letter-spacing: 1px;
 }
 
 .subtitle {
   margin-top: 10px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   opacity: 0.9;
 }
 
@@ -71,17 +70,17 @@ nav a:hover {
   padding: 0 20px;
 }
 
-/* CARD STYLE */
+/* CONTENT CARDS */
 
 .card {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   line-height: 1.7;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
-/* SECTION TITLES — SAME COLOR */
+/* SECTION TITLES */
 
 .card h2,
 .card h3 {
@@ -92,11 +91,18 @@ nav a:hover {
 
 .card img {
   width: 100%;
-  max-width: 650px;
+  max-width: 420px;
   height: auto;
   display: block;
-  margin: 0 auto 20px;
+  margin: 20px auto;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Smaller Java logo */
+
+.java-img {
+  max-width: 250px;
 }
 
 /* LISTS */
@@ -128,18 +134,14 @@ footer {
 /* RESPONSIVE */
 
 @media (max-width: 800px) {
+
   .page-layout {
     grid-template-columns: 1fr;
   }
 
   nav a {
     display: inline-block;
-    margin: 5px;
+    margin: 6px;
   }
-  .java-img {
-  max-width: 250px;
-  width: 100%;
-  display: block;
-  margin: 0 auto 20px;
-}
+
 }
