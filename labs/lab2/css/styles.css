@@ -1,145 +1,192 @@
-/* ---------- Page Background ---------- */
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-
   background-image: url("../img/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  color: #e8f5e9; /* soft light green text */
+  min-height: 100vh;
+  color: #e7f5e8;
 }
 
-/* Dark overlay for readability */
 .overlay {
   min-height: 100vh;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.38);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
-
-/* ---------- Main Game Box ---------- */
 
 .game-container {
-  background: rgba(255, 255, 255, 0.15); /* transparent white */
-  backdrop-filter: blur(10px);           /* glass effect */
-  -webkit-backdrop-filter: blur(10px);
-
-  border-radius: 16px;
-  padding: 30px;
-  width: 420px;
-  max-width: 90%;
-
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 720px;
+  padding: 32px;
+  border-radius: 20px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
 }
-
-/* ---------- Headings ---------- */
 
 h1 {
   margin-top: 0;
-  color: #a5d6a7; /* soft green */
+  margin-bottom: 12px;
+  font-size: 2.2rem;
+  color: #b9e4b1;
+  letter-spacing: 0.5px;
 }
 
 h2 {
-  color: #c8e6c9;
+  color: #cdecc8;
+  margin-bottom: 10px;
 }
-
-/* ---------- Instructions ---------- */
 
 .instructions {
-  margin-bottom: 20px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #edf8ee;
+  margin-bottom: 24px;
 }
-
-/* ---------- Scoreboard ---------- */
 
 .scoreboard {
   display: flex;
+  gap: 14px;
   justify-content: space-between;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .score-box {
-  background: rgba(0, 0, 0, 0.25);
-  padding: 10px;
-  border-radius: 8px;
-  width: 30%;
+  flex: 1;
+  min-width: 120px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
 }
 
 .score-label {
   display: block;
-  font-size: 0.9rem;
-  color: #b2dfdb;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #cfe9c8;
 }
 
-/* ---------- Form Section ---------- */
+.form-section {
+  margin-bottom: 20px;
+}
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #e8f6e6;
 }
 
 input[type="number"] {
-  padding: 10px;
   width: 100%;
-  border-radius: 8px;
+  max-width: 220px;
+  padding: 12px;
   border: none;
-  margin-bottom: 15px;
+  border-radius: 10px;
   font-size: 1rem;
+  margin-bottom: 15px;
+  outline: none;
 }
-
-/* ---------- Buttons ---------- */
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 10px 18px;
+  padding: 11px 18px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-
-  background-color: #2e7d32; /* deep green */
   color: white;
-  transition: background 0.2s;
+  background-color: #3f7d3a;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #1b5e20;
+  background-color: #2e5f2a;
+  transform: translateY(-1px);
 }
 
-/* Reset button style */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
 
 #resetBtn {
-  background-color: #558b2f;
+  display: none;
+  background-color: #6c8f52;
 }
 
 #resetBtn:hover {
-  background-color: #33691e;
+  background-color: #557140;
 }
 
-/* ---------- Messages ---------- */
-
 .message-section {
-  margin-top: 15px;
-  min-height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#message {
+  min-height: 28px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #f1fff0;
 }
 
 #errorMessage {
-  color: #ff8a80; /* soft red for errors */
+  min-height: 24px;
+  color: #ff9d9d;
   font-weight: bold;
+  margin-top: 8px;
 }
 
-/* ---------- Guess List ---------- */
-
 .guesses-section {
-  margin-top: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+#guessList {
+  margin: 0;
+  color: #f2fff1;
+  word-wrap: break-word;
+}
+
+.win-message {
+  color: #d8ffd5 !important;
+}
+
+.lose-message {
+  color: #ff7b7b !important;
+}
+
+.hint-message {
+  color: #fff2b3 !important;
+}
+
+@media (max-width: 600px) {
+  .game-container {
+    padding: 22px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .scoreboard {
+    flex-direction: column;
+  }
 }
