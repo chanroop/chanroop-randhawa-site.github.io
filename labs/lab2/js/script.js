@@ -1,130 +1,132 @@
-let targetNumber = generateRandomNumber();
+let targetNumber = Math.floor(Math.random() * 99) + 1;
 let attempts = 0;
 let wins = 0;
 let losses = 0;
 const maxAttempts = 7;
+let previousGuesses = [];
 
-const playerGuessInput = document.getElementById("playerGuess");
+const guessInput = document.getElementById("guessInput");
 const guessBtn = document.getElementById("guessBtn");
 const resetBtn = document.getElementById("resetBtn");
 const message = document.getElementById("message");
-const attemptsLeftDisplay = document.getElementById("attemptsLeft");
+const errorMessage = document.getElementById("errorMessage");
+const guessList = document.getElementById("guessList");
+const attemptsDisplay = document.getElementById("attempts");
 const winsDisplay = document.getElementById("wins");
 const lossesDisplay = document.getElementById("losses");
-const guessList = document.getElementById("guessList");
 
-function generateRandomNumber() {
-  return Math.floor(Math.random() * 99) + 1;
-}
-
-function updateDisplays() {
-  attemptsLeftDisplay.textContent = maxAttempts - attempts;
+function updateScoreboard() {
+  attemptsDisplay.textContent = attempts;
   winsDisplay.textContent = wins;
   lossesDisplay.textContent = losses;
 }
 
-function setMessage(text, className = "") {
-  message.textContent = text;
-  message.className = "";
-  if (className) {
-    message.classList.add(className);
+function updateGuessList() {
+  if (previousGuesses.length === 0) {
+    guessList.textContent = "None yet.";
+  } else {
+    guessList.textContent = previousGuesses.join(", ");
   }
-}
-
-function validateGuess(value) {
-  if (value.trim() === "") {
-    setMessage("Please enter a number.", "error");
-    return null;
-  }
-
-  const guess = Number(value);
-
-  if (!Number.isInteger(guess)) {
-    setMessage("Please enter a whole number.", "error");
-    return null;
-  }
-
-  if (guess < 1 || guess > 99) {
-    setMessage("Error: number must be between 1 and 99.", "error");
-    return null;
-  }
-
-  return guess;
-}
-
-function appendGuess(guess) {
-  const li = document.createElement("li");
-  li.textContent = guess;
-  guessList.appendChild(li);
 }
 
 function endGame() {
   guessBtn.disabled = true;
   guessBtn.style.display = "none";
   resetBtn.style.display = "inline-block";
+  guessInput.disabled = true;
+}
+
+function validateGuess(value) {
+  if (value.trim() === "") {
+    errorMessage.textContent = "Please enter a number.";
+    return null;
+  }
+
+  const guess = Number(value);
+
+  if (!Number.isInteger(guess)) {
+    errorMessage.textContent = "Please enter a whole number.";
+    return null;
+  }
+
+  if (guess < 1 || guess > 99) {
+    errorMessage.textContent = "Error: number must be between 1 and 99.";
+    return null;
+  }
+
+  errorMessage.textContent = "";
+  return guess;
 }
 
 function handleGuess() {
-  const guess = validateGuess(playerGuessInput.value);
-
-  if (guess === null) {
-    return;
-  }
+  const guess = validateGuess(guessInput.value);
+  if (guess === null) return;
 
   attempts++;
-  appendGuess(guess);
-  updateDisplays();
+  previousGuesses.push(guess);
+
+  updateScoreboard();
+  updateGuessList();
 
   if (guess === targetNumber) {
+    message.textContent = `Congratulations! You guessed the number ${targetNumber} in ${attempts} attempt(s)!`;
+    message.className = "win-message";
     wins++;
-    updateDisplays();
-    setMessage(
-      `Congratulations! You guessed the number ${targetNumber} in ${attempts} attempt(s)!`,
-      "success"
-    );
+    updateScoreboard();
     endGame();
     return;
   }
 
   if (attempts >= maxAttempts) {
+    message.textContent = `You Lost! The correct number was ${targetNumber}.`;
+    message.className = "lose-message";
     losses++;
-    updateDisplays();
-    setMessage(`You Lost! The correct number was ${targetNumber}.`, "error");
+    updateScoreboard();
     endGame();
     return;
   }
 
   if (guess < targetNumber) {
-    setMessage("Too low. Enter a higher number.", "warning");
+    message.textContent = "Too low. Try a higher number.";
+    message.className = "hint-message";
   } else {
-    setMessage("Too high. Enter a lower number.", "warning");
+    message.textContent = "Too high. Try a lower number.";
+    message.className = "hint-message";
   }
 
-  playerGuessInput.value = "";
-  playerGuessInput.focus();
+  guessInput.value = "";
+  guessInput.focus();
 }
 
 function resetGame() {
-  targetNumber = generateRandomNumber();
+  targetNumber = Math.floor(Math.random() * 99) + 1;
   attempts = 0;
-  guessList.innerHTML = "";
-  playerGuessInput.value = "";
-  updateDisplays();
-  setMessage("New game started. Enter a number between 1 and 99.");
+  previousGuesses = [];
+
+  guessInput.disabled = false;
+  guessInput.value = "";
   guessBtn.disabled = false;
   guessBtn.style.display = "inline-block";
   resetBtn.style.display = "none";
-  playerGuessInput.focus();
+
+  message.textContent = "Start the game by entering a number.";
+  message.className = "";
+  errorMessage.textContent = "";
+
+  updateScoreboard();
+  updateGuessList();
+  guessInput.focus();
 }
 
 guessBtn.addEventListener("click", handleGuess);
-resetBtn.addEventListener("click", resetGame);
 
-playerGuessInput.addEventListener("keydown", function (event) {
+guessInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter" && !guessBtn.disabled) {
     handleGuess();
   }
 });
 
-updateDisplays();
-setMessage("Start by entering your first guess.");
+resetBtn.addEventListener("click", resetGame);
+
+updateScoreboard();
+updateGuessList();
