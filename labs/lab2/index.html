@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess the Number</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 2 - Number Guessing Game</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div class="overlay">
-    <div class="game-container">
-      <h1>Guess the Number</h1>
+    <main class="game-container">
+      <h1>Number Guessing Game</h1>
       <p class="instructions">
-        Enter a number between 1 and 99. You have 7 attempts to guess correctly.
+        Guess a number between <strong>1</strong> and <strong>99</strong>.
+        You have <strong>7 attempts</strong> to win.
       </p>
 
-      <div class="input-section">
-        <label for="playerGuess">Your Guess:</label>
-        <input type="text" id="playerGuess">
-        <button id="guessBtn">Guess</button>
-        <button id="resetBtn">Reset</button>
-      </div>
+      <section class="scoreboard">
+        <div class="score-box">
+          <span class="score-label">Wins</span>
+          <span id="wins">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-label">Losses</span>
+          <span id="losses">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-label">Attempts</span>
+          <span id="attempts">0</span>
+        </div>
+      </section>
 
-      <div class="stats">
-        <p><strong>Attempts Left:</strong> <span id="attemptsLeft">7</span></p>
-        <p><strong>Wins:</strong> <span id="wins">0</span></p>
-        <p><strong>Losses:</strong> <span id="losses">0</span></p>
-      </div>
+      <section class="form-section">
+        <label for="guessInput">Enter your guess:</label>
+        <input
+          type="number"
+          id="guessInput"
+          name="guessInput"
+          min="1"
+          max="99"
+          placeholder="1 - 99"
+        />
 
-      <div id="message"></div>
+        <div class="button-group">
+          <button id="guessBtn">Guess</button>
+          <button id="resetBtn" style="display: none;">Reset</button>
+        </div>
+      </section>
 
-      <div class="guesses-box">
+      <section class="message-section">
+        <p id="message">Start the game by entering a number.</p>
+        <p id="errorMessage"></p>
+      </section>
+
+      <section class="guesses-section">
         <h2>Previous Guesses</h2>
-        <ul id="guessList"></ul>
-      </div>
-    </div>
+        <p id="guessList">None yet.</p>
+      </section>
+    </main>
   </div>
 
   <script src="js/script.js"></script>
