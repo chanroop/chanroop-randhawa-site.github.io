@@ -49,8 +49,13 @@ function validateGuess(value) {
     return null;
   }
 
-  if (guess < 1 || guess > 99) {
-    errorMessage.textContent = "Error: number must be between 1 and 99.";
+  if (guess > 99) {
+    errorMessage.textContent = "Error: number cannot be higher than 99.";
+    return null;
+  }
+
+  if (guess < 1) {
+    errorMessage.textContent = "Error: number must be at least 1.";
     return null;
   }
 
