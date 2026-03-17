@@ -5,17 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>US Geography Quiz</title>
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Your CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body class="text-center">
 
   <div class="quiz-container">
-
     <h1 class="quiz-title">US Geography Quiz</h1>
 
     <!-- Question 1 -->
@@ -24,21 +19,39 @@
     <p id="feedback1"></p>
 
     <!-- Question 2 -->
-    <h3>2) Which is the largest US state?</h3>
-    <select id="q2" class="form-select">
+    <h3>2) What is the capital of Texas?</h3>
+    <input id="q2" type="text" class="form-control">
+    <p id="feedback2"></p>
+
+    <!-- Question 3 -->
+    <h3>3) What is the capital of New York?</h3>
+    <input id="q3" type="text" class="form-control">
+    <p id="feedback3"></p>
+
+    <!-- Question 4 -->
+    <h3>4) What is the capital of Florida?</h3>
+    <input id="q4" type="text" class="form-control">
+    <p id="feedback4"></p>
+
+    <!-- Question 5 -->
+    <h3>5) What is the capital of Nevada?</h3>
+    <input id="q5" type="text" class="form-control">
+    <p id="feedback5"></p>
+
+    <!-- Question 6 -->
+    <h3>6) Which is the largest US state?</h3>
+    <select id="q6" class="form-select">
       <option value="">Select one</option>
       <option value="California">California</option>
       <option value="Texas">Texas</option>
       <option value="Alaska">Alaska</option>
       <option value="Montana">Montana</option>
     </select>
-    <p id="feedback2"></p>
+    <p id="feedback6"></p>
 
-    <!-- Question 3 -->
-    <h3>3) Select the presidents on Mt. Rushmore:</h3>
-
+    <!-- Question 7 -->
+    <h3>7) Select the presidents on Mt. Rushmore:</h3>
     <div class="question-block">
-
       <input type="checkbox" id="washington">
       <label for="washington">George Washington</label><br>
 
@@ -53,16 +66,12 @@
 
       <input type="checkbox" id="kennedy">
       <label for="kennedy">John F. Kennedy</label>
-
     </div>
+    <p id="feedback7"></p>
 
-    <p id="feedback3"></p>
-
-    <!-- Question 4 -->
-    <h3>4) What ocean borders California?</h3>
-
+    <!-- Question 8 -->
+    <h3>8) What ocean borders California?</h3>
     <div class="question-block">
-
       <input type="radio" id="atlantic" name="ocean" value="Atlantic">
       <label for="atlantic">Atlantic Ocean</label><br>
 
@@ -71,32 +80,26 @@
 
       <input type="radio" id="indian" name="ocean" value="Indian">
       <label for="indian">Indian Ocean</label>
-
     </div>
+    <p id="feedback8"></p>
 
-    <p id="feedback4"></p>
+    <!-- Question 9 -->
+    <h3>9) Which state is known as the Sunshine State?</h3>
+    <div id="choices9"></div>
+    <p id="feedback9"></p>
 
-    <!-- Question 5 (Randomized) -->
-    <h3>5) Which state is known as the Sunshine State?</h3>
+    <!-- Question 10 -->
+    <h3>10) Which state has the Grand Canyon?</h3>
+    <div id="choices10"></div>
+    <p id="feedback10"></p>
 
-    <div id="choices"></div>
+    <button id="submitButton" class="btn btn-primary">Submit Quiz</button>
 
-    <p id="feedback5"></p>
-
-    <!-- Submit Button -->
-    <button id="submitButton" class="btn btn-primary">
-      Submit Quiz
-    </button>
-
-    <!-- Results -->
     <h2 id="totalScore"></h2>
     <h3 id="totalAttempts"></h3>
     <h3 id="message"></h3>
-
   </div>
 
-  <!-- Your JS -->
   <script src="js/script.js"></script>
-
 </body>
 </html>
