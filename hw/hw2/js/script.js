@@ -7,10 +7,10 @@ if (attempts === null) {
 
 document.getElementById("totalAttempts").innerHTML = "Total Attempts: " + attempts;
 
-document.getElementById("submitButton").addEventListener("click", gradeQuiz);
-
 displayQ9Choices();
 displayQ10Choices();
+
+document.getElementById("submitButton").addEventListener("click", gradeQuiz);
 
 function gradeQuiz() {
   score = 0;
@@ -49,13 +49,13 @@ function showFinalMessage() {
 
 function rightAnswer(id) {
   document.getElementById(id).innerHTML =
-    '<span class="correct">Correct!</span>' +
+    '<span class="correct">Correct!</span> ' +
     '<img src="img/checkmark.png" alt="correct answer" class="answer-icon">';
 }
 
 function wrongAnswer(id) {
   document.getElementById(id).innerHTML =
-    '<span class="incorrect">Incorrect!</span>' +
+    '<span class="incorrect">Incorrect!</span> ' +
     '<img src="img/xmark.png" alt="incorrect answer" class="answer-icon">';
 }
 
