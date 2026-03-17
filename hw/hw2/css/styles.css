@@ -1,0 +1,89 @@
+body {
+  background-color: #f4f8fb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.quiz-container {
+  max-width: 750px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.quiz-title {
+  background-color: #79d8f7;
+  color: #222;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+h3 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.form-control,
+.form-select {
+  max-width: 420px;
+  margin: 0 auto 10px auto;
+}
+
+.question-block,
+#choices {
+  margin-bottom: 10px;
+}
+
+label {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+#submitButton {
+  margin-top: 20px;
+  padding: 10px 22px;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+.answer-icon {
+  width: 24px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+#totalScore {
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+#totalAttempts {
+  margin-top: 10px;
+  color: #444;
+}
+
+#message {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.pass-message {
+  color: green;
+}
+
+.fail-message {
+  color: red;
+}
