@@ -5,14 +5,12 @@ if (attempts === null) {
   attempts = 0;
 }
 
-// show previous attempts on page load
 document.getElementById("totalAttempts").innerHTML = "Total Attempts: " + attempts;
 
-// submit button event listener
 document.getElementById("submitButton").addEventListener("click", gradeQuiz);
 
-// display randomized multiple-choice options on page load
-displayQ5Choices();
+displayQ9Choices();
+displayQ10Choices();
 
 function gradeQuiz() {
   score = 0;
@@ -22,8 +20,13 @@ function gradeQuiz() {
   gradeQ3();
   gradeQ4();
   gradeQ5();
+  gradeQ6();
+  gradeQ7();
+  gradeQ8();
+  gradeQ9();
+  gradeQ10();
 
-  document.getElementById("totalScore").innerHTML = "Total Score: " + score;
+  document.getElementById("totalScore").innerHTML = "Total Score: " + score + "/100";
 
   attempts++;
   localStorage.setItem("total_attempts", attempts);
@@ -56,32 +59,73 @@ function wrongAnswer(id) {
     '<img src="img/xmark.png" alt="incorrect answer" class="answer-icon">';
 }
 
-// Question 1 - text input
 function gradeQ1() {
   var response = document.getElementById("q1").value.trim().toLowerCase();
 
   if (response === "sacramento") {
     rightAnswer("feedback1");
-    score += 20;
+    score += 10;
   } else {
     wrongAnswer("feedback1");
   }
 }
 
-// Question 2 - dropdown
 function gradeQ2() {
-  var response = document.getElementById("q2").value;
+  var response = document.getElementById("q2").value.trim().toLowerCase();
 
-  if (response === "Alaska") {
+  if (response === "austin") {
     rightAnswer("feedback2");
-    score += 20;
+    score += 10;
   } else {
     wrongAnswer("feedback2");
   }
 }
 
-// Question 3 - checkboxes
 function gradeQ3() {
+  var response = document.getElementById("q3").value.trim().toLowerCase();
+
+  if (response === "albany") {
+    rightAnswer("feedback3");
+    score += 10;
+  } else {
+    wrongAnswer("feedback3");
+  }
+}
+
+function gradeQ4() {
+  var response = document.getElementById("q4").value.trim().toLowerCase();
+
+  if (response === "tallahassee") {
+    rightAnswer("feedback4");
+    score += 10;
+  } else {
+    wrongAnswer("feedback4");
+  }
+}
+
+function gradeQ5() {
+  var response = document.getElementById("q5").value.trim().toLowerCase();
+
+  if (response === "carson city") {
+    rightAnswer("feedback5");
+    score += 10;
+  } else {
+    wrongAnswer("feedback5");
+  }
+}
+
+function gradeQ6() {
+  var response = document.getElementById("q6").value;
+
+  if (response === "Alaska") {
+    rightAnswer("feedback6");
+    score += 10;
+  } else {
+    wrongAnswer("feedback6");
+  }
+}
+
+function gradeQ7() {
   var washington = document.getElementById("washington").checked;
   var jefferson = document.getElementById("jefferson").checked;
   var lincoln = document.getElementById("lincoln").checked;
@@ -89,50 +133,74 @@ function gradeQ3() {
   var kennedy = document.getElementById("kennedy").checked;
 
   if (washington && jefferson && lincoln && roosevelt && !kennedy) {
-    rightAnswer("feedback3");
-    score += 20;
+    rightAnswer("feedback7");
+    score += 10;
   } else {
-    wrongAnswer("feedback3");
+    wrongAnswer("feedback7");
   }
 }
 
-// Question 4 - radio buttons
-function gradeQ4() {
+function gradeQ8() {
   var response = document.querySelector('input[name="ocean"]:checked');
 
   if (response && response.value === "Pacific") {
-    rightAnswer("feedback4");
-    score += 20;
+    rightAnswer("feedback8");
+    score += 10;
   } else {
-    wrongAnswer("feedback4");
+    wrongAnswer("feedback8");
   }
 }
 
-// Question 5 - randomized multiple choice
-function gradeQ5() {
+function gradeQ9() {
   var response = document.querySelector('input[name="sunshine"]:checked');
 
   if (response && response.value === "Florida") {
-    rightAnswer("feedback5");
-    score += 20;
+    rightAnswer("feedback9");
+    score += 10;
   } else {
-    wrongAnswer("feedback5");
+    wrongAnswer("feedback9");
   }
 }
 
-function displayQ5Choices() {
-  var choices = ["Florida", "California", "Nevada", "Arizona"];
+function gradeQ10() {
+  var response = document.querySelector('input[name="canyon"]:checked');
+
+  if (response && response.value === "Arizona") {
+    rightAnswer("feedback10");
+    score += 10;
+  } else {
+    wrongAnswer("feedback10");
+  }
+}
+
+function displayQ9Choices() {
+  var choices = ["Florida", "California", "Nevada", "Virginia"];
   shuffleArray(choices);
 
   var output = "";
 
   for (var i = 0; i < choices.length; i++) {
     output +=
-      '<input type="radio" id="choice' + i + '" name="sunshine" value="' + choices[i] + '"> ' +
-      '<label for="choice' + i + '">' + choices[i] + '</label><br>';
+      '<input type="radio" id="sunshine' + i + '" name="sunshine" value="' + choices[i] + '"> ' +
+      '<label for="sunshine' + i + '">' + choices[i] + '</label><br>';
   }
 
-  document.getElementById("choices").innerHTML = output;
+  document.getElementById("choices9").innerHTML = output;
+}
+
+function displayQ10Choices() {
+  var choices = ["Arizona", "Texas", "Oregon", "Utah"];
+  shuffleArray(choices);
+
+  var output = "";
+
+  for (var i = 0; i < choices.length; i++) {
+    output +=
+      '<input type="radio" id="canyon' + i + '" name="canyon" value="' + choices[i] + '"> ' +
+      '<label for="canyon' + i + '">' + choices[i] + '</label><br>';
+  }
+
+  document.getElementById("choices10").innerHTML = output;
 }
 
 function shuffleArray(array) {
