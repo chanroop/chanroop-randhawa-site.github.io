@@ -13,7 +13,7 @@ loadStates();
 
 // Display city, latitude, and longitude based on zip code
 async function displayCity() {
-  let zipCode = document.querySelector("#zip").value;
+  let zipCode = document.querySelector("#zip").value.trim();
   let url = `https://csumb.space/api/cityInfoAPI.php?zip=${zipCode}`;
 
   let response = await fetch(url);
@@ -21,16 +21,23 @@ async function displayCity() {
 
   let zipError = document.querySelector("#zipError");
 
-  if (data === false) {
-    document.querySelector("#city").innerHTML = "";
-    document.querySelector("#latitude").innerHTML = "";
-    document.querySelector("#longitude").innerHTML = "";
+  document.querySelector("#city").innerHTML = "";
+  document.querySelector("#latitude").innerHTML = "";
+  document.querySelector("#longitude").innerHTML = "";
+  zipError.innerHTML = "";
+
+  if (
+    data === false ||
+    data === null ||
+    data.zip === false ||
+    data.city === false ||
+    data.city === undefined
+  ) {
     zipError.innerHTML = "Zip code not found";
     zipError.style.color = "red";
     return;
   }
 
-  zipError.innerHTML = "";
   document.querySelector("#city").innerHTML = data.city;
   document.querySelector("#latitude").innerHTML = data.latitude;
   document.querySelector("#longitude").innerHTML = data.longitude;
@@ -72,13 +79,14 @@ async function displayCounties() {
 
 // Check whether username is available
 async function checkUsername() {
-  let username = document.querySelector("#username").value;
+  let username = document.querySelector("#username").value.trim();
   let url = `https://csumb.space/api/usernamesAPI.php?username=${username}`;
 
   let response = await fetch(url);
   let data = await response.json();
 
   let usernameError = document.querySelector("#usernameError");
+  usernameError.innerHTML = "";
 
   if (data.available) {
     usernameError.innerHTML = "Username available!";
@@ -109,13 +117,14 @@ async function getSuggestedPassword() {
 function validateForm(e) {
   let isValid = true;
 
-  let username = document.querySelector("#username").value;
+  let username = document.querySelector("#username").value.trim();
   let password = document.querySelector("#password").value;
   let retypePassword = document.querySelector("#retypePassword").value;
 
   let usernameError = document.querySelector("#usernameError");
   let passwordError = document.querySelector("#passwordError");
 
+  usernameError.innerHTML = "";
   passwordError.innerHTML = "";
 
   if (username.length === 0) {
