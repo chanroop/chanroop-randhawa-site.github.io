@@ -1,4 +1,3 @@
-// event listeners
 document.querySelector("#zip").addEventListener("change", displayCity);
 document.querySelector("#state").addEventListener("change", displayCounties);
 document.querySelector("#username").addEventListener("change", checkUsername);
@@ -7,11 +6,8 @@ document.querySelector("#signupForm").addEventListener("submit", function(event)
   validateForm(event);
 });
 
-// load all states when page loads
 loadStates();
 
-
-// Display city, latitude, and longitude based on zip code
 async function displayCity() {
   let zipCode = document.querySelector("#zip").value.trim();
   let url = `https://csumb.space/api/cityInfoAPI.php?zip=${zipCode}`;
@@ -26,13 +22,7 @@ async function displayCity() {
   document.querySelector("#longitude").innerHTML = "";
   zipError.innerHTML = "";
 
-  if (
-    data === false ||
-    data === null ||
-    data.zip === false ||
-    data.city === false ||
-    data.city === undefined
-  ) {
+  if (!data || data === false || data.city === undefined || data.city === false) {
     zipError.innerHTML = "Zip code not found";
     zipError.style.color = "red";
     return;
@@ -43,8 +33,6 @@ async function displayCity() {
   document.querySelector("#longitude").innerHTML = data.longitude;
 }
 
-
-// Load all US states from API
 async function loadStates() {
   let url = "https://csumb.space/api/allStatesAPI.php";
 
@@ -55,12 +43,13 @@ async function loadStates() {
   stateList.innerHTML = '<option value="">Select One</option>';
 
   for (let i = 0; i < data.length; i++) {
-    stateList.innerHTML += `<option value="${data[i].usps}">${data[i].state}</option>`;
+    let code = data[i].usps || data[i].abbreviation || data[i].abbr || data[i].code;
+    let name = data[i].state || data[i].name;
+
+    stateList.innerHTML += `<option value="${code}">${name}</option>`;
   }
 }
 
-
-// Display counties based on selected state
 async function displayCounties() {
   let state = document.querySelector("#state").value;
   let url = `https://csumb.space/api/countyListAPI.php?state=${state}`;
@@ -76,8 +65,6 @@ async function displayCounties() {
   }
 }
 
-
-// Check whether username is available
 async function checkUsername() {
   let username = document.querySelector("#username").value.trim();
   let url = `https://csumb.space/api/usernamesAPI.php?username=${username}`;
@@ -97,8 +84,6 @@ async function checkUsername() {
   }
 }
 
-
-// Display suggested password when password box is clicked
 async function getSuggestedPassword() {
   let url = "https://csumb.space/api/suggestedPassword.php?length=8";
 
@@ -112,8 +97,6 @@ async function getSuggestedPassword() {
   }
 }
 
-
-// Validate form data before submit
 function validateForm(e) {
   let isValid = true;
 
