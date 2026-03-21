@@ -10,11 +10,6 @@ loadStates();
 
 async function displayCity() {
   let zipCode = document.querySelector("#zip").value.trim();
-  let url = `https://csumb.space/api/cityInfoAPI.php?zip=${zipCode}`;
-
-  let response = await fetch(url);
-  let data = await response.json();
-
   let zipError = document.querySelector("#zipError");
 
   document.querySelector("#city").innerHTML = "";
@@ -22,7 +17,17 @@ async function displayCity() {
   document.querySelector("#longitude").innerHTML = "";
   zipError.innerHTML = "";
 
-  if (!data || data === false || data.city === undefined || data.city === false) {
+  if (!/^\d{5}$/.test(zipCode)) {
+    zipError.innerHTML = "Zip code not found";
+    zipError.style.color = "red";
+    return;
+  }
+
+  let url = `https://csumb.space/api/cityInfoAPI.php?zip=${zipCode}`;
+  let response = await fetch(url);
+  let data = await response.json();
+
+  if (!data || data === false || !data.city || data.city === "false") {
     zipError.innerHTML = "Zip code not found";
     zipError.style.color = "red";
     return;
@@ -35,7 +40,6 @@ async function displayCity() {
 
 async function loadStates() {
   let url = "https://csumb.space/api/allStatesAPI.php";
-
   let response = await fetch(url);
   let data = await response.json();
 
@@ -45,7 +49,6 @@ async function loadStates() {
   for (let i = 0; i < data.length; i++) {
     let code = data[i].usps || data[i].abbreviation || data[i].abbr || data[i].code;
     let name = data[i].state || data[i].name;
-
     stateList.innerHTML += `<option value="${code}">${name}</option>`;
   }
 }
