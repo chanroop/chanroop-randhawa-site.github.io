@@ -1,137 +1,142 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+// event listeners
+document.querySelector("#zip").addEventListener("change", displayCity);
+document.querySelector("#state").addEventListener("change", displayCounties);
+document.querySelector("#username").addEventListener("change", checkUsername);
+document.querySelector("#password").addEventListener("click", getSuggestedPassword);
+document.querySelector("#signupForm").addEventListener("submit", function(event) {
+  validateForm(event);
+});
 
-\f0\fs24 \cf0 let targetNumber = generateRandomNumber();\
-let attempts = 0;\
-let wins = 0;\
-let losses = 0;\
-const maxAttempts = 7;\
-\
-const playerGuessInput = document.getElementById("playerGuess");\
-const guessBtn = document.getElementById("guessBtn");\
-const resetBtn = document.getElementById("resetBtn");\
-const message = document.getElementById("message");\
-const attemptsLeftDisplay = document.getElementById("attemptsLeft");\
-const winsDisplay = document.getElementById("wins");\
-const lossesDisplay = document.getElementById("losses");\
-const guessList = document.getElementById("guessList");\
-\
-function generateRandomNumber() \{\
-  return Math.floor(Math.random() * 99) + 1;\
-\}\
-\
-function updateDisplays() \{\
-  attemptsLeftDisplay.textContent = maxAttempts - attempts;\
-  winsDisplay.textContent = wins;\
-  lossesDisplay.textContent = losses;\
-\}\
-\
-function setMessage(text, className = "") \{\
-  message.textContent = text;\
-  message.className = "";\
-  if (className) \{\
-    message.classList.add(className);\
-  \}\
-\}\
-\
-function validateGuess(value) \{\
-  if (value.trim() === "") \{\
-    setMessage("Please enter a number.", "error");\
-    return null;\
-  \}\
-\
-  const guess = Number(value);\
-\
-  if (!Number.isInteger(guess)) \{\
-    setMessage("Please enter a whole number.", "error");\
-    return null;\
-  \}\
-\
-  if (guess < 1 || guess > 99) \{\
-    setMessage("Error: number must be between 1 and 99.", "error");\
-    return null;\
-  \}\
-\
-  return guess;\
-\}\
-\
-function appendGuess(guess) \{\
-  const li = document.createElement("li");\
-  li.textContent = guess;\
-  guessList.appendChild(li);\
-\}\
-\
-function endGame() \{\
-  guessBtn.disabled = true;\
-  guessBtn.style.display = "none";\
-  resetBtn.style.display = "inline-block";\
-\}\
-\
-function handleGuess() \{\
-  const guess = validateGuess(playerGuessInput.value);\
-\
-  if (guess === null) \{\
-    return;\
-  \}\
-\
-  attempts++;\
-  appendGuess(guess);\
-  updateDisplays();\
-\
-  if (guess === targetNumber) \{\
-    wins++;\
-    updateDisplays();\
-    setMessage(\
-      `Congratulations! You guessed the number $\{targetNumber\} in $\{attempts\} attempt(s)!`,\
-      "success"\
-    );\
-    endGame();\
-    return;\
-  \}\
-\
-  if (attempts >= maxAttempts) \{\
-    losses++;\
-    updateDisplays();\
-    setMessage(`You Lost! The correct number was $\{targetNumber\}.`, "error");\
-    endGame();\
-    return;\
-  \}\
-\
-  if (guess < targetNumber) \{\
-    setMessage("Too low. Enter a higher number.", "warning");\
-  \} else \{\
-    setMessage("Too high. Enter a lower number.", "warning");\
-  \}\
-\
-  playerGuessInput.value = "";\
-  playerGuessInput.focus();\
-\}\
-\
-function resetGame() \{\
-  targetNumber = generateRandomNumber();\
-  attempts = 0;\
-  guessList.innerHTML = "";\
-  playerGuessInput.value = "";\
-  updateDisplays();\
-  setMessage("New game started. Enter a number between 1 and 99.");\
-  guessBtn.disabled = false;\
-  guessBtn.style.display = "inline-block";\
-  resetBtn.style.display = "none";\
-  playerGuessInput.focus();\
-\}\
-\
-guessBtn.addEventListener("click", handleGuess);\
-resetBtn.addEventListener("click", resetGame);\
-\
-playerGuessInput.addEventListener("keydown", function (event) \{\
-  if (event.key === "Enter" && !guessBtn.disabled) \{\
-    handleGuess();\
-  \}\
-\});\
-\
-updateDisplays();\
-setMessage("Start by entering your first guess.");}
+// load all states when page loads
+loadStates();
+
+
+// Display city, latitude, and longitude based on zip code
+async function displayCity() {
+  let zipCode = document.querySelector("#zip").value;
+  let url = `https://csumb.space/api/cityInfoAPI.php?zip=${zipCode}`;
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  let zipError = document.querySelector("#zipError");
+
+  if (data === false) {
+    document.querySelector("#city").innerHTML = "";
+    document.querySelector("#latitude").innerHTML = "";
+    document.querySelector("#longitude").innerHTML = "";
+    zipError.innerHTML = "Zip code not found";
+    zipError.style.color = "red";
+    return;
+  }
+
+  zipError.innerHTML = "";
+  document.querySelector("#city").innerHTML = data.city;
+  document.querySelector("#latitude").innerHTML = data.latitude;
+  document.querySelector("#longitude").innerHTML = data.longitude;
+}
+
+
+// Load all US states from API
+async function loadStates() {
+  let url = "https://csumb.space/api/allStatesAPI.php";
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  let stateList = document.querySelector("#state");
+  stateList.innerHTML = '<option value="">Select One</option>';
+
+  for (let i = 0; i < data.length; i++) {
+    stateList.innerHTML += `<option value="${data[i].usps}">${data[i].state}</option>`;
+  }
+}
+
+
+// Display counties based on selected state
+async function displayCounties() {
+  let state = document.querySelector("#state").value;
+  let url = `https://csumb.space/api/countyListAPI.php?state=${state}`;
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  let countyList = document.querySelector("#county");
+  countyList.innerHTML = "<option>Select County</option>";
+
+  for (let i = 0; i < data.length; i++) {
+    countyList.innerHTML += `<option>${data[i].county}</option>`;
+  }
+}
+
+
+// Check whether username is available
+async function checkUsername() {
+  let username = document.querySelector("#username").value;
+  let url = `https://csumb.space/api/usernamesAPI.php?username=${username}`;
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  let usernameError = document.querySelector("#usernameError");
+
+  if (data.available) {
+    usernameError.innerHTML = "Username available!";
+    usernameError.style.color = "green";
+  } else {
+    usernameError.innerHTML = "Username taken";
+    usernameError.style.color = "red";
+  }
+}
+
+
+// Display suggested password when password box is clicked
+async function getSuggestedPassword() {
+  let url = "https://csumb.space/api/suggestedPassword.php?length=8";
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  if (data.password) {
+    document.querySelector("#suggestedPwd").innerHTML = "Suggested Password: " + data.password;
+  } else {
+    document.querySelector("#suggestedPwd").innerHTML = "Suggested Password: " + data;
+  }
+}
+
+
+// Validate form data before submit
+function validateForm(e) {
+  let isValid = true;
+
+  let username = document.querySelector("#username").value;
+  let password = document.querySelector("#password").value;
+  let retypePassword = document.querySelector("#retypePassword").value;
+
+  let usernameError = document.querySelector("#usernameError");
+  let passwordError = document.querySelector("#passwordError");
+
+  passwordError.innerHTML = "";
+
+  if (username.length === 0) {
+    usernameError.innerHTML = "Username Required!";
+    usernameError.style.color = "red";
+    isValid = false;
+  }
+
+  if (password.length < 6) {
+    passwordError.innerHTML += "Password must be at least 6 characters.<br>";
+    passwordError.style.color = "red";
+    isValid = false;
+  }
+
+  if (password !== retypePassword) {
+    passwordError.innerHTML += "Passwords do not match.";
+    passwordError.style.color = "red";
+    isValid = false;
+  }
+
+  if (!isValid) {
+    e.preventDefault();
+  }
+}
