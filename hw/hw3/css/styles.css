@@ -1,27 +1,27 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #101728, #1d2a44, #0f172a);
-  color: #f5f7fb;
+  background: #eef3f8;
+  color: #243447;
   min-height: 100vh;
 }
 
 .hero {
   text-align: center;
-  padding: 50px 20px 35px;
-  background: rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 48px 20px 36px;
+  background: #6f8fb3;
+  color: white;
 }
 
 .hero-content h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 
 .hero-content p {
   margin-top: 12px;
-  font-size: 1.1rem;
-  color: #dbe7ff;
+  font-size: 1.05rem;
+  color: #edf4fb;
 }
 
 .container {
@@ -31,18 +31,16 @@ body {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  border-radius: 18px;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 20px rgba(50, 70, 90, 0.08);
 }
 
 .card h2 {
   margin-top: 0;
-  color: #ffffff;
+  color: #243447;
 }
 
 .form-grid {
@@ -56,22 +54,28 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #eaf2ff;
+  color: #35516b;
 }
 
 input {
   width: 100%;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #c9d6e3;
   border-radius: 10px;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.9);
-  color: #222;
+  background: #f8fbfe;
+  color: #243447;
   font-size: 1rem;
 }
 
+input:focus {
+  outline: none;
+  border-color: #7da2c7;
+  box-shadow: 0 0 0 3px rgba(125, 162, 199, 0.18);
+}
+
 button {
-  background: linear-gradient(135deg, #ff7b54, #ffb26b);
+  background: #7da2c7;
   color: white;
   border: none;
   padding: 12px 22px;
@@ -79,12 +83,12 @@ button {
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(255, 123, 84, 0.35);
+  background: #6b93bb;
+  transform: translateY(-1px);
 }
 
 #message {
@@ -101,16 +105,17 @@ button:hover {
 }
 
 .quake {
-  background: rgba(255, 255, 255, 0.92);
-  color: #1e293b;
+  background: #f8fbfe;
+  color: #243447;
+  border: 1px solid #d8e3ee;
   border-radius: 14px;
   padding: 18px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 12px rgba(50, 70, 90, 0.06);
   transition: transform 0.2s ease;
 }
 
 .quake:hover {
-  transform: scale(1.02);
+  transform: translateY(-2px);
 }
 
 .quake h3 {
@@ -121,6 +126,15 @@ button:hover {
 
 .quake p {
   margin: 8px 0;
+}
+
+.quake a {
+  color: #5a7fa6;
+  text-decoration: none;
+}
+
+.quake a:hover {
+  text-decoration: underline;
 }
 
 .badge {
@@ -134,21 +148,21 @@ button:hover {
 }
 
 .low {
-  background: #3cb371;
+  background: #8bbf9f;
 }
 
 .medium {
-  background: #f4a261;
+  background: #d4a373;
 }
 
 .high {
-  background: #e76f51;
+  background: #c97b7b;
 }
 
 .error {
-  color: #ffb4b4;
+  color: #b45c5c;
 }
 
 .success {
-  color: #9cffb0;
+  color: #5d8a66;
 }
