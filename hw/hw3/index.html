@@ -1,90 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    span.s1 {font-kerning: none}
-  </style>
+  <meta charset="UTF-8" />
+  <title>HW 3 — Earthquake Finder</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;!DOCTYPE html&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;html lang="en"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;US Geography Quiz&lt;/title&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="css/styles.css"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;/head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;body class="text-center"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="quiz-container"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1 class="quiz-title"&gt;US Geography Quiz&lt;/h1&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;What is the capital of California?&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input id="q1" type="text" class="form-control mb-2"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="feedback1"&gt;&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Which is the largest US state?&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="q2" class="form-select mb-2"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value=""&gt;Select one&lt;/option&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="California"&gt;California&lt;/option&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Texas"&gt;Texas&lt;/option&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Alaska"&gt;Alaska&lt;/option&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Montana"&gt;Montana&lt;/option&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="feedback2"&gt;&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Select the presidents on Mt. Rushmore&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="question-block"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="checkbox" id="washington" value="Washington"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="washington"&gt;George Washington&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="checkbox" id="jefferson" value="Jefferson"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="jefferson"&gt;Thomas Jefferson&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="checkbox" id="lincoln" value="Lincoln"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="lincoln"&gt;Abraham Lincoln&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="checkbox" id="roosevelt" value="Roosevelt"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="roosevelt"&gt;Theodore Roosevelt&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="checkbox" id="kennedy" value="Kennedy"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="kennedy"&gt;John F. Kennedy&lt;/label&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="feedback3"&gt;&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;What ocean borders California?&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="question-block"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="radio" id="atlantic" name="ocean" value="Atlantic"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="atlantic"&gt;Atlantic&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="radio" id="pacific" name="ocean" value="Pacific"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="pacific"&gt;Pacific&lt;/label&gt;&lt;br&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="radio" id="indian" name="ocean" value="Indian"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">      </span>&lt;label for="indian"&gt;Indian&lt;/label&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="feedback4"&gt;&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Which state is the Sunshine State?&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="choices"&gt;&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="feedback5"&gt;&lt;/p&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="submitButton" class="btn btn-primary"&gt;Submit Quiz&lt;/button&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 id="totalScore" class="mt-3"&gt;&lt;/h2&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3 id="totalAttempts"&gt;&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h3 id="message"&gt;&lt;/h3&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script src="js/script.js"&gt;&lt;/script&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;/body&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000"><span class="s1">&lt;/html&gt;</span></h1>
+
+<header>
+  <h1>Earthquake Finder</h1>
+  <p>Search earthquakes by date range and magnitude</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Search Criteria</h2>
+
+    <form id="quakeForm">
+      <label>Start Date:</label>
+      <input type="date" id="startDate" required />
+
+      <label>End Date:</label>
+      <input type="date" id="endDate" required />
+
+      <label>Minimum Magnitude:</label>
+      <input type="number" id="magnitude" step="0.1" min="0" required />
+
+      <button type="submit">Search</button>
+    </form>
+
+    <p id="message"></p>
+  </section>
+
+  <section class="card">
+    <h2>Results</h2>
+    <div id="results"></div>
+  </section>
+
+  <section class="card">
+    <h2>Assignment Description</h2>
+    <p>
+      This web page retrieves earthquake data from the USGS Earthquake Web API
+      using JavaScript fetch(). The user enters a date range and minimum
+      magnitude, and the page displays matching earthquakes in a
+      user-friendly format.
+    </p>
+    <p>API used: USGS Earthquake API</p>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
