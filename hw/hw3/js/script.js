@@ -29,7 +29,7 @@ form.addEventListener("submit", async function (event) {
     return;
   }
 
-  message.textContent = "Loading...";
+  message.textContent = "Loading earthquake data...";
   message.className = "";
 
   const url = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${startDate}&endtime=${endDate}&minmagnitude=${magnitude}`;
@@ -58,6 +58,16 @@ form.addEventListener("submit", async function (event) {
   }
 });
 
+function getMagnitudeClass(mag) {
+  if (mag < 4) {
+    return "low";
+  } else if (mag < 6) {
+    return "medium";
+  } else {
+    return "high";
+  }
+}
+
 function displayQuakes(quakes) {
   resultsDiv.innerHTML = "";
 
@@ -65,14 +75,17 @@ function displayQuakes(quakes) {
     const place = q.properties.place;
     const mag = q.properties.mag;
     const time = new Date(q.properties.time).toLocaleString();
+    const detailsUrl = q.properties.url;
+    const magClass = getMagnitudeClass(mag);
 
     const div = document.createElement("div");
     div.classList.add("quake");
 
     div.innerHTML = `
+      <span class="badge ${magClass}">Magnitude ${mag}</span>
       <h3>${place}</h3>
-      <p><strong>Magnitude:</strong> ${mag}</p>
       <p><strong>Date:</strong> ${time}</p>
+      <p><strong>More Info:</strong> <a href="${detailsUrl}" target="_blank">USGS Event Page</a></p>
     `;
 
     resultsDiv.appendChild(div);
