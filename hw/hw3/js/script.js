@@ -9,9 +9,22 @@ form.addEventListener("submit", async function (event) {
   const endDate = document.getElementById("endDate").value;
   const magnitude = document.getElementById("magnitude").value;
 
-  // ✔️ JS validation
-  if (!startDate || !endDate || magnitude < 0) {
-    message.textContent = "Please enter valid search values.";
+  resultsDiv.innerHTML = "";
+
+  if (!startDate || !endDate || magnitude === "") {
+    message.textContent = "Please fill out all fields.";
+    message.className = "error";
+    return;
+  }
+
+  if (endDate < startDate) {
+    message.textContent = "End date cannot be before start date.";
+    message.className = "error";
+    return;
+  }
+
+  if (Number(magnitude) < 0) {
+    message.textContent = "Magnitude cannot be negative.";
     message.className = "error";
     return;
   }
@@ -29,11 +42,16 @@ form.addEventListener("submit", async function (event) {
     }
 
     const data = await response.json();
-    displayQuakes(data.features);
 
+    if (!data.features || data.features.length === 0) {
+      message.textContent = "No earthquakes found for that search.";
+      message.className = "error";
+      return;
+    }
+
+    displayQuakes(data.features);
     message.textContent = `Found ${data.features.length} earthquakes.`;
     message.className = "success";
-
   } catch (error) {
     message.textContent = error.message;
     message.className = "error";
@@ -43,12 +61,7 @@ form.addEventListener("submit", async function (event) {
 function displayQuakes(quakes) {
   resultsDiv.innerHTML = "";
 
-  if (quakes.length === 0) {
-    resultsDiv.textContent = "No earthquakes found.";
-    return;
-  }
-
-  quakes.forEach(q => {
+  quakes.forEach((q) => {
     const place = q.properties.place;
     const mag = q.properties.mag;
     const time = new Date(q.properties.time).toLocaleString();
@@ -57,9 +70,9 @@ function displayQuakes(quakes) {
     div.classList.add("quake");
 
     div.innerHTML = `
-      <strong>Location:</strong> ${place}<br>
-      <strong>Magnitude:</strong> ${mag}<br>
-      <strong>Date:</strong> ${time}
+      <h3>${place}</h3>
+      <p><strong>Magnitude:</strong> ${mag}</p>
+      <p><strong>Date:</strong> ${time}</p>
     `;
 
     resultsDiv.appendChild(div);
