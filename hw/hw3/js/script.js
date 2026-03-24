@@ -96,7 +96,7 @@ function displayQuakes(quakes) {
 
     div.innerHTML = `
       <span class="badge ${magClass}">Magnitude ${mag}</span>
-      <h3>🌋 ${place}</h3>
+      <h3>${place}</h3>
       <p><strong>Date:</strong> ${time}</p>
       <p><strong>More Info:</strong> <a href="${detailsUrl}" target="_blank">USGS Event Page</a></p>
     `;
